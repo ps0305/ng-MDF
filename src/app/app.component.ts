@@ -9,10 +9,12 @@ import { FormGroup,FormControl,Validators} from '@angular/forms';
 export class AppComponent {
   title = 'app';
 
-private userDetail:FormGroup;
+private userDetails:FormGroup;
 constructor(){
         this.userDetails=new FormGroup({
-          fname:new FormControl(),
+          fname:new FormControl("Angular",[Validators.required,
+                                          Validators.minLength(6),
+                                        Validators.maxLength(9)]),
           lname:new FormControl(),
           uemail:new FormControl(),
           addr:new FormGroup({
@@ -24,6 +26,6 @@ constructor(){
          });
 }
 public register(){
-  console.log(this.userDetail.value);
+  console.log(this.userDetails.value);
 }
 }
